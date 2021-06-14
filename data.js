@@ -1,0 +1,734 @@
+const util = require("./utility");
+
+
+let users = [{
+  "id": "8fb6706a8d2c01ee02fd18311779784a",
+  "first_name": "Aryn",
+  "last_name": "Nickoles",
+  "email": "anickoles0@hibu.com",
+  "gender": "Male",
+  "username": "anickoles0"
+}, {
+  "id": "709df90513cf0ed6e5c0f836d6129673",
+  "first_name": "Janella",
+  "last_name": "Arpe",
+  "email": "jarpe1@hao123.com",
+  "gender": "Male",
+  "username": "jarpe1"
+}, {
+  "id": "fec60958be6b0b9b0bb792d528be826d",
+  "first_name": "Else",
+  "last_name": "Titley",
+  "email": "etitley2@printfriendly.com",
+  "gender": "Female",
+  "username": "etitley2"
+}, {
+  "id": "d7313d7a63f629da9c175f2a2c53e694",
+  "first_name": "Annora",
+  "last_name": "Howey",
+  "email": "ahowey3@wired.com",
+  "gender": "Genderfluid",
+  "username": "ahowey3"
+}, {
+  "id": "876b3af7efcb77a4b6ec46f8d6947ab2",
+  "first_name": "Viviana",
+  "last_name": "Inglesfield",
+  "email": "vinglesfield4@hhs.gov",
+  "gender": "Female",
+  "username": "vinglesfield4"
+}, {
+  "id": "5ecbeb6f161502ed46c50e07b117f76d",
+  "first_name": "Edgar",
+  "last_name": "Gummer",
+  "email": "egummer5@smh.com.au",
+  "gender": "Polygender",
+  "username": "egummer5"
+}, {
+  "id": "0422b2ea8d59a386847267b0c1c48104",
+  "first_name": "Noelyn",
+  "last_name": "Calveley",
+  "email": "ncalveley6@elpais.com",
+  "gender": "Genderfluid",
+  "username": "ncalveley6"
+}, {
+  "id": "4602e6520fd0b0221bc5d498fff0e534",
+  "first_name": "Tressa",
+  "last_name": "Standbridge",
+  "email": "tstandbridge7@ezinearticles.com",
+  "gender": "Genderfluid",
+  "username": "tstandbridge7"
+}, {
+  "id": "33cb4693eab46a4f709cd638f42ff0be",
+  "first_name": "Manfred",
+  "last_name": "Hendrickson",
+  "email": "mhendrickson8@who.int",
+  "gender": "Non-binary",
+  "username": "mhendrickson8"
+}, {
+  "id": "2ecd08556014cd7854f2ba2a457d4857",
+  "first_name": "Luke",
+  "last_name": "Liebrecht",
+  "email": "lliebrecht9@ning.com",
+  "gender": "Genderqueer",
+  "username": "lliebrecht9"
+}, {
+  "id": "0b9f6b59510083d259bdf0b9e3126dc9",
+  "first_name": "Dyan",
+  "last_name": "Stobbie",
+  "email": "dstobbiea@springer.com",
+  "gender": "Polygender",
+  "username": "dstobbiea"
+}, {
+  "id": "412cc290f5e81b0487cba3d37fbd5f7b",
+  "first_name": "Dynah",
+  "last_name": "Curmi",
+  "email": "dcurmib@comcast.net",
+  "gender": "Bigender",
+  "username": "dcurmib"
+}, {
+  "id": "e50fef48bc114271c07bd8f977bb34da",
+  "first_name": "Valene",
+  "last_name": "Deneve",
+  "email": "vdenevec@bizjournals.com",
+  "gender": "Agender",
+  "username": "vdenevec"
+}, {
+  "id": "d0767c2e330955eada6664acdc7acdd2",
+  "first_name": "Broderic",
+  "last_name": "Bertot",
+  "email": "bbertotd@yahoo.co.jp",
+  "gender": "Bigender",
+  "username": "bbertotd"
+}, {
+  "id": "0fd30f8ebfae11bbe771c90b095f59c4",
+  "first_name": "Tallou",
+  "last_name": "Essery",
+  "email": "tesserye@example.com",
+  "gender": "Non-binary",
+  "username": "tesserye"
+}, {
+  "id": "8dc9b2c06ba8623ff8caaf4d86ea5a37",
+  "first_name": "Meade",
+  "last_name": "Gajewski",
+  "email": "mgajewskif@godaddy.com",
+  "gender": "Agender",
+  "username": "mgajewskif"
+}, {
+  "id": "39502f9dccc8487c6cd7b293d709343d",
+  "first_name": "Dorrie",
+  "last_name": "Karchowski",
+  "email": "dkarchowskig@elpais.com",
+  "gender": "Female",
+  "username": "dkarchowskig"
+}, {
+  "id": "dd45e601a9b1ef51d11a62b0cb736c8d",
+  "first_name": "Nerita",
+  "last_name": "Truscott",
+  "email": "ntruscotth@seattletimes.com",
+  "gender": "Agender",
+  "username": "ntruscotth"
+}, {
+  "id": "e4202081d856455ef8c4ee4f2aedb959",
+  "first_name": "Thayne",
+  "last_name": "Gillebride",
+  "email": "tgillebridei@plala.or.jp",
+  "gender": "Male",
+  "username": "tgillebridei"
+}, {
+  "id": "0722ab47555158544701ea5093a733f1",
+  "first_name": "Nevin",
+  "last_name": "Buckler",
+  "email": "nbucklerj@shop-pro.jp",
+  "gender": "Non-binary",
+  "username": "nbucklerj"
+}, {
+  "id": "7ec4e85b4d9a4cafec21a32fb6fe195e",
+  "first_name": "Isadore",
+  "last_name": "Olding",
+  "email": "ioldingk@google.ru",
+  "gender": "Non-binary",
+  "username": "ioldingk"
+}, {
+  "id": "6fa31b93437e439883ee497bf6376da5",
+  "first_name": "Darbie",
+  "last_name": "Kyte",
+  "email": "dkytel@gizmodo.com",
+  "gender": "Non-binary",
+  "username": "dkytel"
+}, {
+  "id": "219b1d581c3b9dbff90919ce4e3e815c",
+  "first_name": "Silvano",
+  "last_name": "Knight",
+  "email": "sknightm@webeden.co.uk",
+  "gender": "Non-binary",
+  "username": "sknightm"
+}, {
+  "id": "c95a51512a14be9574b7cf9723446ba2",
+  "first_name": "Daveta",
+  "last_name": "Kiddey",
+  "email": "dkiddeyn@vk.com",
+  "gender": "Male",
+  "username": "dkiddeyn"
+}, {
+  "id": "0791971d3a9529998a6b691a6383528a",
+  "first_name": "Kaine",
+  "last_name": "O'Rafferty",
+  "email": "koraffertyo@parallels.com",
+  "gender": "Non-binary",
+  "username": "koraffertyo"
+}, {
+  "id": "feeefca4e4983e578f0b8f14c5b83c57",
+  "first_name": "Marie-jeanne",
+  "last_name": "Liddyard",
+  "email": "mliddyardp@oracle.com",
+  "gender": "Bigender",
+  "username": "mliddyardp"
+}, {
+  "id": "2751ba4c5456352e33e58ffd88ff3b2e",
+  "first_name": "Sydney",
+  "last_name": "Timlett",
+  "email": "stimlettq@toplist.cz",
+  "gender": "Polygender",
+  "username": "stimlettq"
+}, {
+  "id": "fd65c3d421b83208f066885870df6ac4",
+  "first_name": "Kirby",
+  "last_name": "Sweetlove",
+  "email": "ksweetlover@surveymonkey.com",
+  "gender": "Bigender",
+  "username": "ksweetlover"
+}, {
+  "id": "b13b793f96d0c5e0812f2fa840b650b8",
+  "first_name": "Killie",
+  "last_name": "Reignould",
+  "email": "kreignoulds@ox.ac.uk",
+  "gender": "Genderqueer",
+  "username": "kreignoulds"
+}, {
+  "id": "ed84bbbce5332ac5e35bab4c0e37936f",
+  "first_name": "Lucien",
+  "last_name": "Loughhead",
+  "email": "lloughheadt@google.ru",
+  "gender": "Non-binary",
+  "username": "lloughheadt"
+}, {
+  "id": "50a4ebc46147017103a8e92ebac03340",
+  "first_name": "Chiquita",
+  "last_name": "Pasticznyk",
+  "email": "cpasticznyku@elegantthemes.com",
+  "gender": "Non-binary",
+  "username": "cpasticznyku"
+}, {
+  "id": "4f596cc50cb8f9246c72ff7551940111",
+  "first_name": "Paquito",
+  "last_name": "Hargess",
+  "email": "phargessv@quantcast.com",
+  "gender": "Genderqueer",
+  "username": "phargessv"
+}, {
+  "id": "e519046d8e99d1cea1b19ec35b2dbfcd",
+  "first_name": "Willem",
+  "last_name": "Burdekin",
+  "email": "wburdekinw@cafepress.com",
+  "gender": "Non-binary",
+  "username": "wburdekinw"
+}, {
+  "id": "0a0d9cd41fb16f947601ac1b5f73f1ad",
+  "first_name": "Derril",
+  "last_name": "Daybell",
+  "email": "ddaybellx@sciencedaily.com",
+  "gender": "Bigender",
+  "username": "ddaybellx"
+}, {
+  "id": "2867db413b17f97a525fa4450b787dc7",
+  "first_name": "Jan",
+  "last_name": "Tams",
+  "email": "jtamsy@elegantthemes.com",
+  "gender": "Genderfluid",
+  "username": "jtamsy"
+}, {
+  "id": "6b0f9e2c266e5de379133af428f3ab24",
+  "first_name": "Trix",
+  "last_name": "Van der Baaren",
+  "email": "tvanderbaarenz@jigsy.com",
+  "gender": "Female",
+  "username": "tvanderbaarenz"
+}, {
+  "id": "cf757582155003fb8fcb8f435fbcbc45",
+  "first_name": "Torrin",
+  "last_name": "Greenhow",
+  "email": "tgreenhow10@dropbox.com",
+  "gender": "Polygender",
+  "username": "tgreenhow10"
+}, {
+  "id": "2c9d8d607f9106e9396481b1db002ffd",
+  "first_name": "Clementine",
+  "last_name": "Fance",
+  "email": "cfance11@hud.gov",
+  "gender": "Agender",
+  "username": "cfance11"
+}, {
+  "id": "ff8dc19a682d8106e43e46899fba2179",
+  "first_name": "Alexis",
+  "last_name": "Buttriss",
+  "email": "abuttriss12@privacy.gov.au",
+  "gender": "Genderfluid",
+  "username": "abuttriss12"
+}, {
+  "id": "6d452e8069416e46b5467ac0182b0697",
+  "first_name": "Dita",
+  "last_name": "Quesne",
+  "email": "dquesne13@tamu.edu",
+  "gender": "Bigender",
+  "username": "dquesne13"
+}, {
+  "id": "2c3bccaddc50f32e46634b3dee9d97a8",
+  "first_name": "Kevina",
+  "last_name": "Zuann",
+  "email": "kzuann14@clickbank.net",
+  "gender": "Non-binary",
+  "username": "kzuann14"
+}, {
+  "id": "c822c580d0ff94f1cbe344390e7db7f8",
+  "first_name": "Korry",
+  "last_name": "Galland",
+  "email": "kgalland15@wikispaces.com",
+  "gender": "Male",
+  "username": "kgalland15"
+}, {
+  "id": "01d56d5d9dda030b7ed73600076ec6e2",
+  "first_name": "Rosmunda",
+  "last_name": "Fivey",
+  "email": "rfivey16@theguardian.com",
+  "gender": "Genderfluid",
+  "username": "rfivey16"
+}, {
+  "id": "8d14a03528d69baa4abe14eef181e32d",
+  "first_name": "Nona",
+  "last_name": "Bartosch",
+  "email": "nbartosch17@fema.gov",
+  "gender": "Bigender",
+  "username": "nbartosch17"
+}, {
+  "id": "4a2ecd793c1e2c02911d084e0a4380a3",
+  "first_name": "Orion",
+  "last_name": "Duffrie",
+  "email": "oduffrie18@baidu.com",
+  "gender": "Polygender",
+  "username": "oduffrie18"
+}, {
+  "id": "9c3309357203307779a557fc67b46594",
+  "first_name": "Patrica",
+  "last_name": "David",
+  "email": "pdavid19@github.io",
+  "gender": "Non-binary",
+  "username": "pdavid19"
+}, {
+  "id": "ba6577260e4fe35f64f06ac69ce9cbc3",
+  "first_name": "Rosabelle",
+  "last_name": "Anslow",
+  "email": "ranslow1a@cdc.gov",
+  "gender": "Polygender",
+  "username": "ranslow1a"
+}, {
+  "id": "2070e8d9057e1c72074466ab8eac6470",
+  "first_name": "Verge",
+  "last_name": "Maskill",
+  "email": "vmaskill1b@sphinn.com",
+  "gender": "Polygender",
+  "username": "vmaskill1b"
+}, {
+  "id": "8e9f63e2df7b8c9a67dbcf68c4f8e004",
+  "first_name": "Danell",
+  "last_name": "Gainor",
+  "email": "dgainor1c@mozilla.org",
+  "gender": "Genderfluid",
+  "username": "dgainor1c"
+}, {
+  "id": "54207010a50ad2536dbdaefefc0564d1",
+  "first_name": "Tybalt",
+  "last_name": "Strickler",
+  "email": "tstrickler1d@businessweek.com",
+  "gender": "Agender",
+  "username": "tstrickler1d"
+}, {
+  "id": "0a4780671ebdae1f82c517d97c52b6c5",
+  "first_name": "Laurel",
+  "last_name": "MacCosto",
+  "email": "lmaccosto1e@jimdo.com",
+  "gender": "Genderfluid",
+  "username": "lmaccosto1e"
+}, {
+  "id": "a2627e0112b153735a08b27314deb824",
+  "first_name": "Benni",
+  "last_name": "Sagrott",
+  "email": "bsagrott1f@aboutads.info",
+  "gender": "Bigender",
+  "username": "bsagrott1f"
+}, {
+  "id": "8c5809f6f46371c9a1a49ae837aa18a7",
+  "first_name": "Shoshana",
+  "last_name": "Bury",
+  "email": "sbury1g@youtu.be",
+  "gender": "Male",
+  "username": "sbury1g"
+}, {
+  "id": "b707b9d37b452517510a001b8c274caf",
+  "first_name": "Skyler",
+  "last_name": "Lexa",
+  "email": "slexa1h@clickbank.net",
+  "gender": "Agender",
+  "username": "slexa1h"
+}, {
+  "id": "f93a6c20efd27d9b286b941cebda055d",
+  "first_name": "Allis",
+  "last_name": "Broggetti",
+  "email": "abroggetti1i@twitpic.com",
+  "gender": "Genderqueer",
+  "username": "abroggetti1i"
+}, {
+  "id": "2799f887eced1971619999721cc54cfb",
+  "first_name": "Marigold",
+  "last_name": "McKeighen",
+  "email": "mmckeighen1j@fastcompany.com",
+  "gender": "Non-binary",
+  "username": "mmckeighen1j"
+}, {
+  "id": "0e01eaa218019a756fa4135524cf0bac",
+  "first_name": "Chris",
+  "last_name": "Baudon",
+  "email": "cbaudon1k@rambler.ru",
+  "gender": "Bigender",
+  "username": "cbaudon1k"
+}, {
+  "id": "82673222d695ffc45fe4677af280a1c7",
+  "first_name": "Henderson",
+  "last_name": "Abrashkin",
+  "email": "habrashkin1l@auda.org.au",
+  "gender": "Bigender",
+  "username": "habrashkin1l"
+}, {
+  "id": "c860b672f21b0e4e094ad9c542953d4b",
+  "first_name": "Wain",
+  "last_name": "Houndesome",
+  "email": "whoundesome1m@360.cn",
+  "gender": "Non-binary",
+  "username": "whoundesome1m"
+}, {
+  "id": "d59204a378ca07e07533152cfc387f76",
+  "first_name": "Riccardo",
+  "last_name": "Hulburd",
+  "email": "rhulburd1n@squarespace.com",
+  "gender": "Polygender",
+  "username": "rhulburd1n"
+}, {
+  "id": "37ef77fb4e09b53037cf234f8f399e40",
+  "first_name": "Ruthi",
+  "last_name": "Purselow",
+  "email": "rpurselow1o@scientificamerican.com",
+  "gender": "Genderfluid",
+  "username": "rpurselow1o"
+}, {
+  "id": "c09aae041cfa7cc753be11dfdeb8a45e",
+  "first_name": "Bernete",
+  "last_name": "Linck",
+  "email": "blinck1p@berkeley.edu",
+  "gender": "Agender",
+  "username": "blinck1p"
+}, {
+  "id": "f5c3db6b02bb5ee69c80389ada2663ba",
+  "first_name": "Gabriellia",
+  "last_name": "Rippingall",
+  "email": "grippingall1q@hostgator.com",
+  "gender": "Genderqueer",
+  "username": "grippingall1q"
+}, {
+  "id": "ed85777cc6047137199cb5cbc2da7046",
+  "first_name": "Georgi",
+  "last_name": "Teasdale",
+  "email": "gteasdale1r@chron.com",
+  "gender": "Genderfluid",
+  "username": "gteasdale1r"
+}, {
+  "id": "dcdee98eafbf08b7d744da93ff4ad8e8",
+  "first_name": "Mychal",
+  "last_name": "Phillot",
+  "email": "mphillot1s@google.ca",
+  "gender": "Genderfluid",
+  "username": "mphillot1s"
+}, {
+  "id": "62f5341c0aec782396c0afce498e6905",
+  "first_name": "Iosep",
+  "last_name": "Abernethy",
+  "email": "iabernethy1t@yelp.com",
+  "gender": "Male",
+  "username": "iabernethy1t"
+}, {
+  "id": "1d1efdff134ec59deaf638bd1a8df7a5",
+  "first_name": "Rowena",
+  "last_name": "Kienle",
+  "email": "rkienle1u@parallels.com",
+  "gender": "Male",
+  "username": "rkienle1u"
+}, {
+  "id": "3e90abd51ca6fc349bedda6ac5b12c2e",
+  "first_name": "Garrett",
+  "last_name": "Carvilla",
+  "email": "gcarvilla1v@sun.com",
+  "gender": "Genderqueer",
+  "username": "gcarvilla1v"
+}, {
+  "id": "1023b5514aae4055b1579117415d4f6b",
+  "first_name": "Tobe",
+  "last_name": "Gilmour",
+  "email": "tgilmour1w@etsy.com",
+  "gender": "Agender",
+  "username": "tgilmour1w"
+}, {
+  "id": "771d0821d8308370acac182dede1d052",
+  "first_name": "Brennan",
+  "last_name": "Portman",
+  "email": "bportman1x@amazon.de",
+  "gender": "Bigender",
+  "username": "bportman1x"
+}, {
+  "id": "ef8d1aba359302f5aeff349bafe47e4e",
+  "first_name": "Joyan",
+  "last_name": "Cossor",
+  "email": "jcossor1y@artisteer.com",
+  "gender": "Bigender",
+  "username": "jcossor1y"
+}, {
+  "id": "ab7e954859520fa7936533e4c4154f35",
+  "first_name": "Brooks",
+  "last_name": "Schild",
+  "email": "bschild1z@gravatar.com",
+  "gender": "Genderqueer",
+  "username": "bschild1z"
+}, {
+  "id": "0afdd46eef45608ba8ae85ba70766456",
+  "first_name": "Reeba",
+  "last_name": "Jeanneau",
+  "email": "rjeanneau20@google.pl",
+  "gender": "Agender",
+  "username": "rjeanneau20"
+}, {
+  "id": "02e3b092af74768409168ec7cc44849a",
+  "first_name": "Bordy",
+  "last_name": "Sommerly",
+  "email": "bsommerly21@alexa.com",
+  "gender": "Bigender",
+  "username": "bsommerly21"
+}, {
+  "id": "e7785ab4985e24478d771a6bc9e026be",
+  "first_name": "Cristi",
+  "last_name": "Nolton",
+  "email": "cnolton22@engadget.com",
+  "gender": "Genderqueer",
+  "username": "cnolton22"
+}, {
+  "id": "a0135ce2337ad67255f8b195d9ebe57b",
+  "first_name": "Marylou",
+  "last_name": "Adame",
+  "email": "madame23@dmoz.org",
+  "gender": "Male",
+  "username": "madame23"
+}, {
+  "id": "a4cf5147794df95c9f72106616fe2556",
+  "first_name": "Rita",
+  "last_name": "Lorent",
+  "email": "rlorent24@blogs.com",
+  "gender": "Non-binary",
+  "username": "rlorent24"
+}, {
+  "id": "73c670c48b1339665d05a00244bf3acf",
+  "first_name": "Lawry",
+  "last_name": "Baume",
+  "email": "lbaume25@skyrock.com",
+  "gender": "Genderqueer",
+  "username": "lbaume25"
+}, {
+  "id": "ccd0bc23d9a5edb816f222492d7e2c4d",
+  "first_name": "Dani",
+  "last_name": "Gunby",
+  "email": "dgunby26@sogou.com",
+  "gender": "Polygender",
+  "username": "dgunby26"
+}, {
+  "id": "2f04d1f799f472b381be613acba3ba6d",
+  "first_name": "Theodore",
+  "last_name": "Comettoi",
+  "email": "tcomettoi27@addthis.com",
+  "gender": "Genderqueer",
+  "username": "tcomettoi27"
+}, {
+  "id": "aa4b26b266d81d44833489c25e437b14",
+  "first_name": "Andromache",
+  "last_name": "Collin",
+  "email": "acollin28@engadget.com",
+  "gender": "Genderqueer",
+  "username": "acollin28"
+}, {
+  "id": "8f7114683bac5c780cadf07d5d9cd280",
+  "first_name": "Belita",
+  "last_name": "Lathaye",
+  "email": "blathaye29@google.it",
+  "gender": "Genderfluid",
+  "username": "blathaye29"
+}, {
+  "id": "9dac2cf7743036215a10668ec1147773",
+  "first_name": "Hussein",
+  "last_name": "Artis",
+  "email": "hartis2a@nifty.com",
+  "gender": "Polygender",
+  "username": "hartis2a"
+}, {
+  "id": "58c17a7598b06c2e59eb9b370350cfaf",
+  "first_name": "Ashlee",
+  "last_name": "Marvel",
+  "email": "amarvel2b@amazon.co.jp",
+  "gender": "Male",
+  "username": "amarvel2b"
+}, {
+  "id": "751c5d2a3179f2ddd1e012eb0001e160",
+  "first_name": "Yvon",
+  "last_name": "MacKartan",
+  "email": "ymackartan2c@paypal.com",
+  "gender": "Genderqueer",
+  "username": "ymackartan2c"
+}, {
+  "id": "936f3d4b367ee2a606b4e5a5ce8d92d4",
+  "first_name": "Jocelyn",
+  "last_name": "Lauderdale",
+  "email": "jlauderdale2d@independent.co.uk",
+  "gender": "Female",
+  "username": "jlauderdale2d"
+}, {
+  "id": "67e672487c6394458336cde24260755d",
+  "first_name": "Dolly",
+  "last_name": "Bingham",
+  "email": "dbingham2e@samsung.com",
+  "gender": "Bigender",
+  "username": "dbingham2e"
+}, {
+  "id": "57d08b5e3fd61febe358ba4a11ff032d",
+  "first_name": "Annetta",
+  "last_name": "Capehorn",
+  "email": "acapehorn2f@fema.gov",
+  "gender": "Polygender",
+  "username": "acapehorn2f"
+}, {
+  "id": "a8e3673a76909f224054a0482823f978",
+  "first_name": "Gwyneth",
+  "last_name": "Clair",
+  "email": "gclair2g@nhs.uk",
+  "gender": "Genderqueer",
+  "username": "gclair2g"
+}, {
+  "id": "b98584c8e801bd1b16b11128c7c766e6",
+  "first_name": "Sherwynd",
+  "last_name": "Pettet",
+  "email": "spettet2h@php.net",
+  "gender": "Bigender",
+  "username": "spettet2h"
+}, {
+  "id": "42c69c32fa646c6e0756650956136307",
+  "first_name": "Amby",
+  "last_name": "Tolcharde",
+  "email": "atolcharde2i@princeton.edu",
+  "gender": "Bigender",
+  "username": "atolcharde2i"
+}, {
+  "id": "3d172b7c136ec3875dc7511aa6cf29c6",
+  "first_name": "Eduardo",
+  "last_name": "Nicely",
+  "email": "enicely2j@slideshare.net",
+  "gender": "Bigender",
+  "username": "enicely2j"
+}, {
+  "id": "0158a3514cb4465e3e27052afb4223e3",
+  "first_name": "Caressa",
+  "last_name": "Emblin",
+  "email": "cemblin2k@nps.gov",
+  "gender": "Female",
+  "username": "cemblin2k"
+}, {
+  "id": "23f77b22f2d69d9b7604dee6c2a41cb1",
+  "first_name": "Ruthann",
+  "last_name": "Brennenstuhl",
+  "email": "rbrennenstuhl2l@so-net.ne.jp",
+  "gender": "Bigender",
+  "username": "rbrennenstuhl2l"
+}, {
+  "id": "7b517e5afceb79510c75b2efb3185daa",
+  "first_name": "Marne",
+  "last_name": "Barrass",
+  "email": "mbarrass2m@behance.net",
+  "gender": "Male",
+  "username": "mbarrass2m"
+}, {
+  "id": "47b6d773f00a2f79e15ecf7c7fa8c39f",
+  "first_name": "Bernetta",
+  "last_name": "Marguerite",
+  "email": "bmarguerite2n@wunderground.com",
+  "gender": "Male",
+  "username": "bmarguerite2n"
+}, {
+  "id": "0680aca586866dbc00c2e4f2ba3b7d1c",
+  "first_name": "Tam",
+  "last_name": "Gellibrand",
+  "email": "tgellibrand2o@vkontakte.ru",
+  "gender": "Female",
+  "username": "tgellibrand2o"
+}, {
+  "id": "a3d78e73cb01c6f46d398f365235e80e",
+  "first_name": "Trixy",
+  "last_name": "Sainteau",
+  "email": "tsainteau2p@state.tx.us",
+  "gender": "Agender",
+  "username": "tsainteau2p"
+}, {
+  "id": "7cbc4088eed314c83ac7e12bdb8b0513",
+  "first_name": "Babbette",
+  "last_name": "Casine",
+  "email": "bcasine2q@guardian.co.uk",
+  "gender": "Bigender",
+  "username": "bcasine2q"
+}, {
+  "id": "2882347a692bf2fdc977a96339a2e34a",
+  "first_name": "Alisander",
+  "last_name": "Ghilks",
+  "email": "aghilks2r@utexas.edu",
+  "gender": "Polygender",
+  "username": "aghilks2r"
+}];
+
+module.exports = {
+	users: {
+		getAll: () => users,
+		get: id => users.find(user => user.id == id),
+		post: obj => {
+			let user = { id: util.generateUID(), ...obj };
+			users.push(user);
+			return user;
+		},
+		patch: (id, obj) => {
+			let index = users.findIndex(user => user.id == id);
+
+			users[index] = { ...users[index], ...obj, id };
+
+			return users[index];
+		},
+		put: (id, obj) => {
+			let index = users.findIndex(user => user.id == id);
+
+			users[index] = { ...obj, id };
+			return users[index];
+		},
+		delete: (id) => {
+			let index = users.findIndex(user => user.id == id);
+
+			return users.splice(index, 1)[0];
+		}
+	}
+};
