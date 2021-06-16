@@ -1,19 +1,24 @@
 const express = require("express");
 const db = require("./data");
+const util = require("./utility");
 const app = express();
 
 app.use(express.json());
 
 app.get("/", (req, res) => {
-	res.send("Make requests for '/users'");
+	res.send("Make requests for '/api/users'");
 });
 
 
-app.get("/users", (req,res) => {
-	res.send(db.users.getAll());
+app.get("/api/users", db.auth.isAuthorized, (req,res) => {
+	if (util.emptyObject(req.query))
+		return res.send(db.users.getAll());
+	
+	const result = db.users.query(req.query);
+	res.send(result);
 });
 
-app.get("/users/:id", (req,res) => {
+app.get("/api/users/:id", db.auth.isAuthorized, (req,res) => {
 	const { id } = req.params;
 	const user = db.users.get(id);
 
@@ -21,14 +26,14 @@ app.get("/users/:id", (req,res) => {
 });
 
 
-app.post("/users", (req, res) => {
+app.post("/api/users", db.auth.isAuthorized, (req, res) => {
 	let user = { ...req.body };
 
 	user ? res.send(db.users.post(user)) : res.sendStatus(400);
 });
 
 
-app.put("/users/:id", (req, res) => {
+app.put("/api/users/:id", db.auth.isAuthorized, (req, res) => {
 	const { id } = req.params;
 	const user = { ...req.body };
 	let updatedObj = user ? db.users.put(id, user): null;
@@ -37,7 +42,7 @@ app.put("/users/:id", (req, res) => {
 });
 
 
-app.patch("/users/:id", (req, res) => {
+app.patch("/api/users/:id", db.auth.isAuthorized, (req, res) => {
 	const { id } = req.params;
 	const user = { ...req.body };
 	let updatedObj = user ? db.users.patch(id, user): null;
@@ -47,7 +52,7 @@ app.patch("/users/:id", (req, res) => {
 });
 
 
-app.delete("/users/:id", (req,res) => {
+app.delete("/api/users/:id", db.auth.isAuthorized, (req,res) => {
 	const { id } = req.params;
 	const user = db.users.delete(id);
 	
@@ -57,13 +62,9 @@ app.delete("/users/:id", (req,res) => {
 
 
 
-
-
-
-
-
-
 app.listen(3000, ()=>{
 	console.clear();
 	console.log("listening...");
 });
+
+// db.users.query({gender: "Female"}).length;
