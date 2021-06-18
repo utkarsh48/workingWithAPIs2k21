@@ -1,12 +1,18 @@
 const express = require("express");
 const db = require("./data");
 const util = require("./utility");
+const showdown = require("showdown");
 const app = express();
+const fs = require("fs");
 
 app.use(express.json());
 
 app.get("/", (req, res) => {
-	res.send("Make requests for '/api/users'");
+	fs.readFile("./README.md", "utf8", (err, data,)=>{
+		const converter = new showdown.Converter();
+		let htmlData = converter.makeHtml(data);
+		res.send(htmlData);
+	});
 });
 
 
@@ -66,5 +72,3 @@ app.listen(3000, ()=>{
 	console.clear();
 	console.log("listening...");
 });
-
-// db.users.query({gender: "Female"}).length;
