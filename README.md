@@ -37,7 +37,7 @@ To query the data make a `GET` request to:
 https://workingWithAPIs.utkarshdhiman.repl.co/api/users?key=value
 ```
 
-List of keys and possible values if any.
+List of keys and possible common values if any.
 - `id`
 - `first_name`
 - `last_name`
